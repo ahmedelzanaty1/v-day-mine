@@ -204,3 +204,89 @@ h1 {
     width: 260px;
     height: 260px;
 }
+#troll-btn{
+margin-top:20px;
+padding:14px 28px;
+border:none;
+border-radius:16px;
+background:#222;
+color:white;
+font-weight:800;
+cursor:pointer;
+position:relative;
+}
+
+.heart-mode{
+background:#ff4da6;
+border-radius:50%;
+width:160px;
+height:160px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.nice-btn{
+margin-top:20px;
+padding:16px 32px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#ff4da6,#ff85a2);
+color:white;
+font-weight:900;
+cursor:pointer;
+}
+
+#troll-btn{
+padding:18px 40px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#111,#333);
+color:white;
+font-weight:900;
+cursor:pointer;
+}
+
+.fireworks::before,
+.fireworks::after{
+content:"✨ 🎆 ✨ 🎇 ✨";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+text-align:center;
+font-size:2rem;
+animation:fire 2s linear infinite;
+}
+
+@keyframes fire{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100vh);}
+}
+.troll-btn{
+margin-top:20px;
+background:linear-gradient(135deg,#111,#333);
+color:white;
+border:none;
+border-radius:18px;
+padding:18px 36px;
+font-size:1.2rem;
+font-weight:900;
+font-family:'Nunito',sans-serif;
+cursor:pointer;
+box-shadow:0 6px 18px rgba(0,0,0,0.3);
+transition:transform .2s;
+}
+
+.troll-btn:hover{
+transform:scale(1.08);
+}
+
+#troll-msg{
+margin-top:14px;
+font-size:1.1rem;
+font-weight:700;
+color:#d63384;
+min-height:24px;
+}
+

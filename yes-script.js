@@ -1,63 +1,38 @@
-let musicPlaying = false
-
 window.addEventListener('load', () => {
-    launchConfetti()
-
-    // Autoplay music (works since user clicked Yes to get here)
-    const music = document.getElementById('bg-music')
-    music.volume = 0.3
-    music.play().catch(() => {})
-    musicPlaying = true
-    document.getElementById('music-toggle').textContent = '🔊'
-})
+    launchConfetti();
+});
 
 function launchConfetti() {
-    const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#ffb3c1', '#ff0000', '#ff6347', '#fff', '#ffdf00']
-    const duration = 6000
-    const end = Date.now() + duration
-
-    // Initial big burst
-    confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { x: 0.5, y: 0.3 },
-        colors
-    })
-
-    // Continuous side cannons
-    const interval = setInterval(() => {
-        if (Date.now() > end) {
-            clearInterval(interval)
-            return
-        }
-
-        confetti({
-            particleCount: 40,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0, y: 0.6 },
-            colors
-        })
-
-        confetti({
-            particleCount: 40,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1, y: 0.6 },
-            colors
-        })
-    }, 300)
+    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
 }
 
-function toggleMusic() {
-    const music = document.getElementById('bg-music')
-    if (musicPlaying) {
-        music.pause()
-        musicPlaying = false
-        document.getElementById('music-toggle').textContent = '🔇'
-    } else {
-        music.play()
-        musicPlaying = true
-        document.getElementById('music-toggle').textContent = '🔊'
+const trollBtn = document.getElementById('troll-btn');
+const trollMsg = document.getElementById('troll-msg');
+let escapeCount = 0;
+
+trollBtn.addEventListener('mouseover', () => {
+    escapeCount++;
+    
+    // يهرب 10 مرات
+    if (escapeCount < 10) {
+        trollMsg.innerText = "Run after me 😂 Catch me if you can 😈";
+        trollBtn.style.position = 'fixed';
+        trollBtn.style.left = Math.random() * 80 + 'vw';
+        trollBtn.style.top = Math.random() * 80 + 'vh';
+    } 
+    else if (escapeCount === 10) {
+        trollMsg.innerText = "You're close… I'm an old man 😭";
+        trollBtn.style.left = '50%';
+        trollBtn.style.top = '70%';
+        trollBtn.style.transform = 'translateX(-50%)';
+    } 
+    else {
+        trollMsg.innerText = "Okay you win 😂 click me";
+        trollBtn.innerText = "Click for a surprise! ❤️";
+        trollBtn.style.position = 'relative';
+        trollBtn.style.left = '0';
+        trollBtn.style.top = '0';
+        trollBtn.style.transform = 'none';
+        trollBtn.onclick = () => window.location.href = 'video.html';
     }
-}
+});
